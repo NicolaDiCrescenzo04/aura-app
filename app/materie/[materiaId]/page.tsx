@@ -13,6 +13,7 @@ const MateriaPage = async ({params}: Props) => {
       <Link href={`/`}>
       Torna indietro
       </Link>
+      
       <p>{materiaId}</p>
       <Link href={`/materie/${materiaId}/schemi/schema-1`}>
      Schema 1
