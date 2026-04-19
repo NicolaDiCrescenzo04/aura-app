@@ -1,12 +1,16 @@
+import CardSchema from '@/app/components/card-schema'
 import Link from 'next/link'
-import React from 'react'
+import { getMateriaById } from '@/app/lib/materie'
+
 
 type Props = {
     params: Promise<{materiaId: string}>
 }
 
 const MateriaPage = async ({params}: Props) => {
+
   const {materiaId} = await params
+
   return (
     <div> 
    
@@ -15,9 +19,18 @@ const MateriaPage = async ({params}: Props) => {
       </Link>
       
       <p>{materiaId}</p>
-      <Link href={`/materie/${materiaId}/schemi/schema-1`}>
-     Schema 1
-      </Link>
+      <div className='flex flex-wrap'>
+      {getMateriaById(materiaId)?.schemi.map((schema) => (
+        <CardSchema 
+          key={schema.id}
+          materiaId={materiaId}
+          schemaId={schema.id}
+          titolo={schema.titolo} 
+          createdAt={schema.createdAt}
+        />
+      ))}
+      </div>
+
     </div>
   )
 }

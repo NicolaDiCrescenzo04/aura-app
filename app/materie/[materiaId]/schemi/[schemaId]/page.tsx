@@ -1,3 +1,4 @@
+import { getSchemaById } from '@/app/lib/materie'
 import Link from 'next/link'
 import React from 'react'
 
@@ -16,7 +17,7 @@ const SchemaPage = async ({params}: Props) => {
        <Link href={`/materie/${materiaId}`}>
       Torna indietro
       </Link>
-      <p>{schemaId}</p>
+      {getSchemaById(materiaId, schemaId)?.titolo}
     </div>
   )
 }
