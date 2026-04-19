@@ -1,6 +1,8 @@
 import { getSchemaById } from '@/app/lib/materie'
 import Link from 'next/link'
-import React from 'react'
+import { ReactFlow, Background, Controls, applyNodeChanges, applyEdgeChanges } from '@xyflow/react';
+import Canvas from '@/app/components/canvas';
+import { get } from 'http';
 
 type Props = {
     params: Promise<{
@@ -9,15 +11,17 @@ type Props = {
     }>
 }
 
+
 const SchemaPage = async ({params}: Props) => {
-  console.log(params) 
   const {schemaId, materiaId} = await params
+  getSchemaById(materiaId, schemaId)
+  const existingNodes = getSchemaById(materiaId, schemaId)?.nodes || []
+  const existingEdges = getSchemaById(materiaId, schemaId)?.edges || []
+
+
   return (
-    <div>
-       <Link href={`/materie/${materiaId}`}>
-      Torna indietro
-      </Link>
-      {getSchemaById(materiaId, schemaId)?.titolo}
+    <div style={{ height: '100vh', width: '100%' }}>
+      <Canvas existingNodes={existingNodes} existingEdges={existingEdges} />
     </div>
   )
 }
