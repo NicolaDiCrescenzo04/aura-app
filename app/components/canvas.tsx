@@ -26,7 +26,7 @@ const Canvas = ({ existingNodes, existingEdges }: { existingNodes: Nodes[]; exis
 );
 
     return (
-      <ReactFlow nodes={nodes} edges={edges} onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} onConnect={onConnect}>
+      <ReactFlow panOnScroll={true} selectionOnDrag={true} panOnDrag={false} nodes={nodes} edges={edges} onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} onConnect={onConnect}>
         <Background />
         <Controls />
       </ReactFlow>
