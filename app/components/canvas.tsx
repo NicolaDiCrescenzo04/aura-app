@@ -4,9 +4,14 @@ import { ReactFlow, applyEdgeChanges, applyNodeChanges, Background, Controls, ad
 
 import React, { useCallback, useState } from 'react'
 import { Edges, Nodes } from '../types/materia';
+import CustomNode from './custom-node';
 
 
 const Canvas = ({ existingNodes, existingEdges }: { existingNodes: Nodes[]; existingEdges: Edges[]}) => {
+
+  const nodeTypes = {
+  custom: CustomNode,
+};
 
   const [nodes, setNodes] = useState(existingNodes);
   const [edges, setEdges] = useState(existingEdges);
@@ -26,7 +31,11 @@ const Canvas = ({ existingNodes, existingEdges }: { existingNodes: Nodes[]; exis
 );
 
     return (
-      <ReactFlow panOnScroll={true} selectionOnDrag={true} panOnDrag={false} nodes={nodes} edges={edges} onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} onConnect={onConnect}>
+      <ReactFlow 
+      panOnScroll={true} selectionOnDrag={true} panOnDrag={false} 
+      nodeTypes={nodeTypes}
+      nodes={nodes} edges={edges} 
+      onNodesChange={onNodesChange} onEdgesChange={onEdgesChange} onConnect={onConnect}>
         <Background />
         <Controls />
       </ReactFlow>
