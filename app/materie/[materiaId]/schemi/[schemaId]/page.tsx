@@ -17,7 +17,7 @@ const SchemaPage = async ({params}: Props) => {
 
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div className="h-screen w-full overflow-hidden bg-white">
       <Canvas existingNodes={existingNodes} existingEdges={existingEdges} />
     </div>
   )

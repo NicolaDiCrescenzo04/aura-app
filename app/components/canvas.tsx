@@ -60,7 +60,8 @@ const Canvas = ({ existingNodes, existingEdges }: { existingNodes: Nodes[]; exis
 );
 
     return (
-      <ReactFlow 
+      <ReactFlow
+      className="bg-white text-[#2d2d2d]"
       panOnScroll={true} selectionOnDrag={true} panOnDrag={false} 
       nodeTypes={nodeTypes}
       nodes={editableNodes} edges={edges} 
